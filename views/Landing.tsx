@@ -175,7 +175,6 @@ const Services = ({ onCtaClick }: { onCtaClick: () => void }) => (
           popular={true}
           onCtaClick={onCtaClick}
           items={[
-            "10-Day Monthly Close",
             "Cash or Accrual Basis",
             "Quarterly Advisory Meeting",
             "KPI Dashboarding",
