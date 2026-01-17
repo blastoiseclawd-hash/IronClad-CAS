@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import Button from '../components/Button';
 import ProfitLeakDetector from '../components/ProfitLeakDetector';
+import Contact from '../components/Contact';
 
 interface LandingProps {
   onCtaClick: () => void;
@@ -257,6 +258,7 @@ const Landing: React.FC<LandingProps> = ({ onCtaClick }) => {
       <Relief onCtaClick={onCtaClick} />
       <Services onCtaClick={onCtaClick} />
       <Niche />
+      <Contact />
       <Gatekeeper onCtaClick={onCtaClick} />
     </>
   );

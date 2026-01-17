@@ -11,7 +11,7 @@ const About: React.FC<AboutProps> = ({ onCtaClick }) => {
       {/* Header */}
       <div className="bg-[#0B1F3A] py-24 text-center px-4">
         <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
-            Expertise Forged in the Firm, <br/><span className="text-[#C47F2A]">Proven in the Field.</span>
+            The Financial Rigor <br/><span className="text-[#C47F2A]">Your Ambition Deserves.</span>
         </h1>
         <p className="text-[#D4DBE2] max-w-2xl mx-auto text-lg">We aren't just accountants. We are growth partners.</p>
       </div>

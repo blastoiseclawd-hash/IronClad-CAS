@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, ShieldCheck } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import Button from './Button';
 import { ViewState } from '../types';
 
@@ -35,10 +35,8 @@ const Navbar: React.FC<NavbarProps> = ({ onCtaClick, currentView, setView }) => 
           
           {/* Logo Area */}
           <div className="flex items-center gap-2 cursor-pointer" onClick={() => handleNavClick('top')}>
-             <ShieldCheck className="text-[#0B1F3A] h-8 w-8" />
-             <span className="text-[#0B1F3A] font-extrabold text-xl tracking-tighter">
-               IRONCLAD <span className="text-[#C47F2A]">CAS</span>
-             </span>
+             {/* Replaced icon with logo image. Assumes logo.png is in the public folder. */}
+             <img src="/logo.png" alt="IronClad CAS" className="h-12 w-auto" />
           </div>
 
           {/* Desktop Nav */}
@@ -48,6 +46,7 @@ const Navbar: React.FC<NavbarProps> = ({ onCtaClick, currentView, setView }) => 
             <button onClick={() => handleNavClick('services')} className="text-[#0B1F3A] hover:text-[#C47F2A] font-semibold transition-colors">Services</button>
             <button onClick={() => handleViewChange('articles')} className="text-[#0B1F3A] hover:text-[#C47F2A] font-semibold transition-colors">Insights</button>
             <button onClick={() => handleViewChange('about')} className="text-[#0B1F3A] hover:text-[#C47F2A] font-semibold transition-colors">Our Firm</button>
+            <button onClick={() => handleNavClick('contact')} className="text-[#0B1F3A] hover:text-[#C47F2A] font-semibold transition-colors">Contact</button>
             <Button onClick={onCtaClick} variant="secondary" className="py-2 px-6 text-xs shadow-none">Book Strategy Call</Button>
           </div>
 
@@ -68,6 +67,7 @@ const Navbar: React.FC<NavbarProps> = ({ onCtaClick, currentView, setView }) => 
             <button onClick={() => handleNavClick('services')} className="block w-full text-left text-[#0B1F3A] font-semibold py-2">Services</button>
             <button onClick={() => handleViewChange('articles')} className="block w-full text-left text-[#0B1F3A] font-semibold py-2">Insights</button>
             <button onClick={() => handleViewChange('about')} className="block w-full text-left text-[#0B1F3A] font-semibold py-2">Our Firm</button>
+             <button onClick={() => handleNavClick('contact')} className="block w-full text-left text-[#0B1F3A] font-semibold py-2">Contact</button>
             <Button onClick={onCtaClick} variant="primary" className="w-full text-center mt-4">Book Strategy Call</Button>
         </div>
       )}
