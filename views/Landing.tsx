@@ -13,9 +13,10 @@ import {
 import Button from '../components/Button';
 import BusinessAudit from '../components/BusinessAudit';
 import Contact from '../components/Contact';
+import { LeadData } from '../types';
 
 interface LandingProps {
-  onCtaClick: () => void;
+  onCtaClick: (data?: LeadData) => void;
 }
 
 const Hero: React.FC<LandingProps> = ({ onCtaClick }) => (
@@ -44,7 +45,7 @@ const Hero: React.FC<LandingProps> = ({ onCtaClick }) => (
             Turn your data into <strong className="text-[#C47F2A]">decisions</strong>. We provide the financial infrastructure that allows businesses to scale without the chaos.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
-            <Button onClick={onCtaClick} variant="primary">
+            <Button onClick={() => onCtaClick()} variant="primary">
               Schedule Strategy Meeting <ArrowRight size={20} />
             </Button>
             <Button 
@@ -114,7 +115,7 @@ const Relief = ({ onCtaClick }: { onCtaClick: () => void }) => (
         ))}
       </div>
       <div className="mt-16 text-center">
-        <Button onClick={onCtaClick} variant="primary" className="mx-auto text-lg px-12 py-5">Schedule Strategy Meeting</Button>
+        <Button onClick={() => onCtaClick()} variant="primary" className="mx-auto text-lg px-12 py-5">Schedule Strategy Meeting</Button>
       </div>
     </div>
   </div>
@@ -200,7 +201,7 @@ const Services = ({ onCtaClick }: { onCtaClick: () => void }) => (
           <div>
             <h3 className="text-3xl font-bold text-white mb-4">Tax Services & Strategy</h3>
             <p className="text-[#D4DBE2] text-lg mb-6">Don't wait until April. We provide proactive tax planning to minimize liability and avoid surprises.</p>
-            <Button onClick={onCtaClick} variant="outline" className="text-white border-white hover:bg-white hover:text-[#0B1F3A]">Discuss Tax Planning</Button>
+            <Button onClick={() => onCtaClick()} variant="outline" className="text-white border-white hover:bg-white hover:text-[#0B1F3A]">Discuss Tax Planning</Button>
           </div>
           <div className="grid sm:grid-cols-2 gap-4">
             {["Quarterly Advisory", "Estimate Prep", "Tax Strategy", "Tax Preparation"].map((t, i) => (
@@ -241,7 +242,7 @@ const Gatekeeper = ({ onCtaClick }: { onCtaClick: () => void }) => (
       <ShieldCheck className="w-16 h-16 text-white/90 mx-auto mb-6" />
       <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">See if your business qualifies for IronClad.</h2>
       <p className="text-white/90 text-xl mb-10 max-w-2xl mx-auto font-medium">We are selective about our partners. We look for owners who are tired of guessing and ready to build a transferable asset.</p>
-      <button onClick={onCtaClick} className="bg-[#0B1F3A] hover:bg-[#102A4C] text-white font-bold py-6 px-12 rounded-lg text-xl shadow-2xl transition-all transform hover:scale-105">
+      <button onClick={() => onCtaClick()} className="bg-[#0B1F3A] hover:bg-[#102A4C] text-white font-bold py-6 px-12 rounded-lg text-xl shadow-2xl transition-all transform hover:scale-105">
         Schedule Strategy Meeting
       </button>
     </div>

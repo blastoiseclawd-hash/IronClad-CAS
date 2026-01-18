@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Sparkles, Loader2, ArrowRight, Check, AlertCircle, Building2, Users, DollarSign, Calculator } from 'lucide-react';
+import { Sparkles, Loader2, ArrowRight, Check, AlertCircle } from 'lucide-react';
 import Button from './Button';
 import { generateAudit } from '../services/geminiService';
-import { AuditResult, AuditData } from '../types';
+import { sendAuditNotification } from '../services/emailService';
+import { AuditResult, AuditData, LeadData } from '../types';
 
 interface BusinessAuditProps {
-  onCtaClick?: () => void;
+  onCtaClick?: (data?: LeadData) => void;
 }
 
 const BusinessAudit: React.FC<BusinessAuditProps> = ({ onCtaClick }) => {
@@ -17,6 +18,8 @@ const BusinessAudit: React.FC<BusinessAuditProps> = ({ onCtaClick }) => {
   const [formData, setFormData] = useState<AuditData>({
     businessName: '',
     industry: '',
+    email: '',
+    phone: '',
     revenue: '',
     employees: '',
     accountingSetup: '',
@@ -51,9 +54,11 @@ const BusinessAudit: React.FC<BusinessAuditProps> = ({ onCtaClick }) => {
     setErrorMessage(null);
     setResult(null);
 
-    // Simulation of "Lead Capture" to backend
-    console.log("LEAD CAPTURED:", formData);
+    // 1. Send Email Notification (Fire and forget)
+    // We send this immediately so we capture the lead even if the AI analysis fails or takes time.
+    sendAuditNotification(formData).catch(err => console.error("Email dispatch error:", err));
     
+    // 2. Generate AI Audit
     try {
       const data = await generateAudit(formData);
       setResult(data);
@@ -65,9 +70,21 @@ const BusinessAudit: React.FC<BusinessAuditProps> = ({ onCtaClick }) => {
     }
   };
 
+  const handleReviewClick = () => {
+    if (onCtaClick) {
+      onCtaClick({
+        name: formData.businessName, // Using business name as proxy for name if no contact name, or add contact name field
+        email: formData.email,
+        phone: formData.phone
+      });
+    } else {
+      window.open("https://calendly.com/leeserel/30min", "_blank");
+    }
+  };
+
   const renderStep1 = () => (
     <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
-      <div className="space-y-4">
+      <div className="grid md:grid-cols-2 gap-4">
         <div>
             <label className="block text-[#D4DBE2] text-sm font-bold mb-2">Business Name</label>
             <input 
@@ -86,7 +103,7 @@ const BusinessAudit: React.FC<BusinessAuditProps> = ({ onCtaClick }) => {
                 className="w-full bg-[#051120] border border-[#D4DBE2]/20 rounded-lg p-3 text-white focus:ring-2 focus:ring-[#C47F2A] outline-none"
             >
                 <option value="">Select Industry...</option>
-                <option value="Professional Services">Professional Services (Agency, Law, Consulting)</option>
+                <option value="Professional Services">Professional Services</option>
                 <option value="eCommerce / Retail">eCommerce / Retail</option>
                 <option value="Construction / Trades">Construction / Trades</option>
                 <option value="SaaS / Technology">SaaS / Technology</option>
@@ -95,8 +112,32 @@ const BusinessAudit: React.FC<BusinessAuditProps> = ({ onCtaClick }) => {
                 <option value="Other">Other</option>
             </select>
         </div>
+        <div>
+            <label className="block text-[#D4DBE2] text-sm font-bold mb-2">Work Email</label>
+            <input 
+                type="email" 
+                value={formData.email}
+                onChange={(e) => handleInputChange('email', e.target.value)}
+                placeholder="you@company.com"
+                className="w-full bg-[#051120] border border-[#D4DBE2]/20 rounded-lg p-3 text-white focus:ring-2 focus:ring-[#C47F2A] outline-none"
+            />
+        </div>
+        <div>
+            <label className="block text-[#D4DBE2] text-sm font-bold mb-2">Phone Number</label>
+            <input 
+                type="tel" 
+                value={formData.phone}
+                onChange={(e) => handleInputChange('phone', e.target.value)}
+                placeholder="(555) 123-4567"
+                className="w-full bg-[#051120] border border-[#D4DBE2]/20 rounded-lg p-3 text-white focus:ring-2 focus:ring-[#C47F2A] outline-none"
+            />
+        </div>
       </div>
-      <Button onClick={handleNext} disabled={!formData.businessName || !formData.industry} className="w-full">
+      <Button 
+        onClick={handleNext} 
+        disabled={!formData.businessName || !formData.industry || !formData.email || !formData.phone} 
+        className="w-full"
+      >
         Next Step <ArrowRight size={18} />
       </Button>
     </div>
@@ -254,7 +295,7 @@ const BusinessAudit: React.FC<BusinessAuditProps> = ({ onCtaClick }) => {
             <div className="text-center">
                 <p className="text-[#D4DBE2] mb-4 text-sm">We have captured your business profile. Let's discuss these results in detail.</p>
                 <Button 
-                    onClick={onCtaClick ? onCtaClick : () => window.open("https://calendly.com/leeserel/30min", "_blank")} 
+                    onClick={handleReviewClick} 
                     variant="primary" 
                     className="mx-auto w-full md:w-auto"
                 >

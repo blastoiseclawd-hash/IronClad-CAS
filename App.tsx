@@ -6,12 +6,18 @@ import Landing from './views/Landing';
 import Articles from './views/Articles';
 import ArticleReader from './views/ArticleReader';
 import About from './views/About';
-import { Article, ViewState } from './types';
+import { Article, ViewState, LeadData } from './types';
 
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentView, setView] = useState<ViewState>('landing');
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
+  const [prefillData, setPrefillData] = useState<LeadData | undefined>(undefined);
+
+  const handleCtaClick = (data?: LeadData) => {
+    setPrefillData(data);
+    setIsModalOpen(true);
+  };
 
   const handleReadArticle = (article: Article) => {
     setSelectedArticle(article);
@@ -31,17 +37,17 @@ const App = () => {
           />
         ) : <Articles onRead={handleReadArticle} />;
       case 'about':
-        return <About onCtaClick={() => setIsModalOpen(true)} />;
+        return <About onCtaClick={() => handleCtaClick()} />;
       case 'landing':
       default:
-        return <Landing onCtaClick={() => setIsModalOpen(true)} />;
+        return <Landing onCtaClick={handleCtaClick} />;
     }
   };
 
   return (
     <div className="min-h-screen bg-[#D4DBE2] font-sans selection:bg-[#C47F2A] selection:text-white">
       <Navbar 
-        onCtaClick={() => setIsModalOpen(true)} 
+        onCtaClick={() => handleCtaClick()} 
         currentView={currentView} 
         setView={setView} 
       />
@@ -51,7 +57,11 @@ const App = () => {
       </main>
 
       <Footer />
-      <CalendlyModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <CalendlyModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        prefillData={prefillData}
+      />
     </div>
   );
 };
