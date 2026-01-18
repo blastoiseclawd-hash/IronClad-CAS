@@ -21,7 +21,7 @@ const About: React.FC<AboutProps> = ({ onCtaClick }) => {
         <div>
           <h2 className="text-3xl font-bold text-[#0B1F3A] mb-6">Built by CPAs. Designed for Business Owners.</h2>
           <p className="text-[#0B1F3A]/80 text-lg mb-4 leading-relaxed">
-            IronClad CAS is led by a team of CPAs with Big Four pedigree. We understand the rigorous standards required by investors, banks, and stakeholders.
+            IronClad is led by a team of CPAs with Big Four pedigree. We understand the rigorous standards required by investors, banks, and stakeholders.
           </p>
           <p className="text-[#0B1F3A]/80 text-lg mb-8 leading-relaxed">
             But we don't just know debits and credits; we know operations, cash flow cycles, and the specific pressures of running a growing company. With over <strong>20 years of accounting experience</strong>, we bridge the gap between compliance and true strategic advantage.

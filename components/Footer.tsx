@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Mail } from 'lucide-react';
 
 const LogoIconSmall = () => (
@@ -17,10 +17,10 @@ const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="flex items-center gap-2">
            <LogoIconSmall />
-           <span className="text-[#D4DBE2] font-bold tracking-tight text-xl">IronClad <span className="text-[#C47F2A]">CAS</span></span>
+           <span className="text-[#D4DBE2] font-bold tracking-tight text-xl">IronClad</span>
         </div>
         <div className="flex flex-col items-center gap-2 text-[#D4DBE2] text-sm">
-          <span>&copy; {new Date().getFullYear()} IronClad CAS. All rights reserved.</span>
+          <span>&copy; {new Date().getFullYear()} IronClad. All rights reserved.</span>
           <a href="mailto:Lee@ironcladcas.com" className="flex items-center gap-2 hover:text-[#C47F2A] transition-colors">
             <Mail size={14} /> Lee@ironcladcas.com
           </a>

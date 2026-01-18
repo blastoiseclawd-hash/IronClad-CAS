@@ -13,4 +13,14 @@ export interface AuditResult {
   triage_plan: string[];
 }
 
+export interface AuditData {
+  businessName: string;
+  industry: string;
+  revenue: string;
+  employees: string;
+  accountingSetup: string;
+  painPoints: string[];
+  customPain: string;
+}
+
 export type ViewState = 'landing' | 'articles' | 'article-view' | 'about';

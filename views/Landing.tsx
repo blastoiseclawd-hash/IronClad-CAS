@@ -11,7 +11,7 @@ import {
   ShieldCheck 
 } from 'lucide-react';
 import Button from '../components/Button';
-import ProfitLeakDetector from '../components/ProfitLeakDetector';
+import BusinessAudit from '../components/BusinessAudit';
 import Contact from '../components/Contact';
 
 interface LandingProps {
@@ -239,7 +239,7 @@ const Gatekeeper = ({ onCtaClick }: { onCtaClick: () => void }) => (
      <div className="absolute inset-0 bg-[#000000]/10"></div>
     <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
       <ShieldCheck className="w-16 h-16 text-white/90 mx-auto mb-6" />
-      <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">See if your business qualifies for IronClad CAS.</h2>
+      <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">See if your business qualifies for IronClad.</h2>
       <p className="text-white/90 text-xl mb-10 max-w-2xl mx-auto font-medium">We are selective about our partners. We look for owners who are tired of guessing and ready to build a transferable asset.</p>
       <button onClick={onCtaClick} className="bg-[#0B1F3A] hover:bg-[#102A4C] text-white font-bold py-6 px-12 rounded-lg text-xl shadow-2xl transition-all transform hover:scale-105">
         Schedule Strategy Meeting
@@ -253,7 +253,7 @@ const Landing: React.FC<LandingProps> = ({ onCtaClick }) => {
     <>
       <Hero onCtaClick={onCtaClick} />
       <Symptoms />
-      <ProfitLeakDetector />
+      <BusinessAudit onCtaClick={onCtaClick} />
       <Relief onCtaClick={onCtaClick} />
       <Services onCtaClick={onCtaClick} />
       <Niche />

@@ -51,12 +51,9 @@ const Navbar: React.FC<NavbarProps> = ({ onCtaClick, currentView, setView }) => 
           {/* Logo Area */}
           <div className="flex items-center gap-3 cursor-pointer" onClick={() => handleNavClick('top')}>
              <LogoIcon />
-             <div className="flex flex-col">
+             <div className="flex flex-col justify-center h-full">
                 <span className="text-[#0B1F3A] font-extrabold text-2xl tracking-tighter leading-none">
                   IronClad
-                </span>
-                <span className="text-[#C47F2A] font-bold text-lg tracking-widest leading-none">
-                  CAS
                 </span>
              </div>
           </div>
