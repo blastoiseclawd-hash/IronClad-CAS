@@ -21,14 +21,17 @@ const About: React.FC<AboutProps> = ({ onCtaClick }) => {
         <div>
           <h2 className="text-3xl font-bold text-[#0B1F3A] mb-6">Built by CPAs. Designed for Business Owners.</h2>
           <p className="text-[#0B1F3A]/80 text-lg mb-4 leading-relaxed">
-            IronClad is led by a team of CPAs with Big Four pedigree. We understand the rigorous standards required by investors, banks, and stakeholders.
+            IronClad is led by CPAs with Controller, CFO, and Big Four experience for $200 million to $1 billion dollar companies. We bring institutional-grade financial rigor to the middle market.
+          </p>
+          <p className="text-[#0B1F3A]/80 text-lg mb-4 leading-relaxed">
+            We possess deep real estate experience covering acquisition, disposition, advisory, and financing. We understand the deal lifecycle and the capital stack.
           </p>
           <p className="text-[#0B1F3A]/80 text-lg mb-8 leading-relaxed">
-            But we don't just know debits and credits; we know operations, cash flow cycles, and the specific pressures of running a growing company. With over <strong>20 years of accounting experience</strong>, we bridge the gap between compliance and true strategic advantage.
+            We don't just know debits and credits; we know operations, cash flow cycles, and the specific pressures of running a growing company. With over <strong>25 years of accounting experience</strong>, we bridge the gap between compliance and true strategic advantage.
           </p>
           
           <div className="grid grid-cols-2 gap-4 mt-8">
-            {["Strategic Decision Making", "Accounting & Compliance", "Tax Services", "Bookkeeping"].map((s, i) => (
+            {["Strategic Decision Making", "Accounting & Compliance", "Tax Services", "Real Estate Advisory"].map((s, i) => (
               <div key={i} className="flex items-center gap-2 text-[#0B1F3A] font-bold">
                 <CheckCircle2 size={18} className="text-[#C47F2A] flex-shrink-0" /> 
                 {s}
@@ -40,8 +43,8 @@ const About: React.FC<AboutProps> = ({ onCtaClick }) => {
         {/* Stats/Badges */}
         <div className="grid gap-6">
           {[
-            {icon: Award, title: "Big 4 Pedigree", sub: "CPA Certified Leadership"},
-            {icon: Briefcase, title: "20+ Years", sub: "Combined Experience"},
+            {icon: Award, title: "CPA Led", sub: "Enterprise CFO Experience"},
+            {icon: Briefcase, title: "25+ Years", sub: "Combined Experience"},
             {icon: LineChart, title: "Growth Focused", sub: "Strategic Advisory"}
           ].map((stat, i) => (
             <div key={i} className="bg-white p-6 rounded-xl border-l-4 border-[#C47F2A] shadow-xl flex items-center gap-6 transform hover:-translate-x-2 transition-transform duration-300">
