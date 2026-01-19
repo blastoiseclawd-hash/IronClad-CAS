@@ -21,7 +21,7 @@ const About: React.FC<AboutProps> = ({ onCtaClick }) => {
         <div>
           <h2 className="text-3xl font-bold text-[#0B1F3A] mb-6">Built by CPAs. Designed for Business Owners.</h2>
           <p className="text-[#0B1F3A]/80 text-lg mb-4 leading-relaxed">
-            IronClad is led by CPAs with Controller, CFO, and Big Four experience for $200 million to $1 billion dollar companies. We bring institutional-grade financial rigor to the middle market.
+            IronClad is led by CPAs with Controller, CFO, and Big Four experience, having worked with companies ranging from $5 million to over $1 billion in revenue. We bring institutional-grade financial rigor to Main Street and the Middle Market, making elite financial strategy accessible to growing businesses.
           </p>
           <p className="text-[#0B1F3A]/80 text-lg mb-4 leading-relaxed">
             We possess deep real estate experience covering acquisition, disposition, advisory, and financing. We understand the deal lifecycle and the capital stack.
