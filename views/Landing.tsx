@@ -121,12 +121,15 @@ const Relief = ({ onCtaClick }: { onCtaClick: () => void }) => (
   </div>
 );
 
-const ServiceCard = ({ title, target, items, popular, onCtaClick }: any) => (
+const ServiceCard = ({ title, price, target, items, popular, onCtaClick }: any) => (
   <div className={`relative bg-[#102A4C] rounded-2xl p-8 border ${popular ? 'border-[#C47F2A] shadow-2xl shadow-[#C47F2A]/10 transform md:-translate-y-4' : 'border-[#D4DBE2]/10'} flex flex-col h-full transition-all duration-300 hover:shadow-xl`}>
     {popular && (
         <div className="absolute top-0 right-0 bg-[#C47F2A] text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg uppercase tracking-wider">Most Popular</div>
     )}
     <h3 className="text-2xl font-bold text-white mb-2">{title}</h3>
+    {price && (
+        <p className="text-[#C47F2A] font-bold text-lg mb-2">{price}</p>
+    )}
     <p className="text-[#D4DBE2] text-sm mt-1 pb-6 border-b border-[#D4DBE2]/20 mb-6">{target}</p>
     <ul className="space-y-4 mb-8 flex-grow">
       {items.map((item: string, idx: number) => (
@@ -147,7 +150,7 @@ const Services = ({ onCtaClick }: { onCtaClick: () => void }) => (
         <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Our Services.</h2>
         <p className="text-[#D4DBE2] text-lg">Scalable financial solutions for every stage of business.</p>
       </div>
-      <div className="grid lg:grid-cols-4 gap-6 mb-12 items-start">
+      <div className="grid lg:grid-cols-4 gap-6 items-start">
         <ServiceCard 
           title="Diagnostic"
           target="Step 1: Identify the issues."
@@ -161,6 +164,7 @@ const Services = ({ onCtaClick }: { onCtaClick: () => void }) => (
         />
         <ServiceCard 
           title="Bookkeeping"
+          price="Starting at $2,000 / month"
           target="Essential compliance."
           onCtaClick={onCtaClick}
           items={[
@@ -172,6 +176,7 @@ const Services = ({ onCtaClick }: { onCtaClick: () => void }) => (
         />
         <ServiceCard 
           title="Controller"
+          price="Starting at $5,000 / month"
           target="For growth controls."
           popular={true}
           onCtaClick={onCtaClick}
@@ -184,6 +189,7 @@ const Services = ({ onCtaClick }: { onCtaClick: () => void }) => (
         />
         <ServiceCard 
           title="Outsourced CFO"
+          price="Starting at $9,000 / month"
           target="Strategic leadership."
           onCtaClick={onCtaClick}
           items={[
@@ -194,21 +200,6 @@ const Services = ({ onCtaClick }: { onCtaClick: () => void }) => (
             "Fundraising Support"
           ]}
         />
-      </div>
-      
-      <div className="bg-[#102A4C] rounded-2xl border border-[#D4DBE2]/30 p-8 md:p-12 shadow-2xl">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h3 className="text-3xl font-bold text-white mb-4">Tax Services & Strategy</h3>
-            <p className="text-[#D4DBE2] text-lg mb-6">Don't wait until April. We provide proactive tax planning to minimize liability and avoid surprises.</p>
-            <Button onClick={() => onCtaClick()} variant="outline" className="text-white border-white hover:bg-white hover:text-[#0B1F3A]">Discuss Tax Planning</Button>
-          </div>
-          <div className="grid sm:grid-cols-2 gap-4">
-            {["Quarterly Advisory", "Estimate Prep", "Tax Strategy", "Tax Preparation"].map((t, i) => (
-              <div key={i} className="bg-[#0B1F3A] p-4 rounded-lg border border-[#D4DBE2]/10 text-white font-bold flex items-center justify-center text-center">{t}</div>
-            ))}
-          </div>
-        </div>
       </div>
     </div>
   </div>

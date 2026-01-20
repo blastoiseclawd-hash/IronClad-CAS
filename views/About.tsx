@@ -31,7 +31,7 @@ const About: React.FC<AboutProps> = ({ onCtaClick }) => {
           </p>
           
           <div className="grid grid-cols-2 gap-4 mt-8">
-            {["Strategic Decision Making", "Accounting & Compliance", "Tax Services", "Real Estate Advisory"].map((s, i) => (
+            {["Strategic Decision Making", "Accounting & Compliance", "Capital Allocation", "Real Estate Advisory"].map((s, i) => (
               <div key={i} className="flex items-center gap-2 text-[#0B1F3A] font-bold">
                 <CheckCircle2 size={18} className="text-[#C47F2A] flex-shrink-0" /> 
                 {s}
