@@ -4,6 +4,7 @@ import Button from './Button';
 import { generateAudit } from '../services/geminiService';
 import { sendAuditNotification } from '../services/emailService';
 import { submitToHubSpot } from '../services/hubspotService';
+import { trackEvent } from '../services/analyticsService';
 import { AuditResult, AuditData, LeadData } from '../types';
 
 interface BusinessAuditProps {
@@ -46,10 +47,20 @@ const BusinessAudit: React.FC<BusinessAuditProps> = ({ onCtaClick }) => {
   };
 
   const handleNext = () => {
+    // Track step completion to see drop-off rates
+    trackEvent('audit_step_complete', {
+      step_number: step,
+      industry: formData.industry // Capturing industry early if selected
+    });
     setStep(prev => prev + 1);
   };
 
   const handleReviewClick = () => {
+    trackEvent('audit_cta_click', {
+        action: 'schedule_review',
+        has_result: !!result
+    });
+
     if (onCtaClick) {
       onCtaClick({
         name: formData.contactName || formData.businessName,
@@ -68,6 +79,16 @@ const BusinessAudit: React.FC<BusinessAuditProps> = ({ onCtaClick }) => {
     setErrorMessage(null);
     setResult(null);
 
+    // ANALYTICS: Track the actual data inputs (Non-PII only)
+    // This allows you to see "Most common revenue range" or "Top Pain Points" in Google Analytics
+    trackEvent('audit_submission', {
+        industry: formData.industry,
+        revenue_range: formData.revenue,
+        employee_count: formData.employees,
+        accounting_setup: formData.accountingSetup,
+        pain_points: formData.painPoints.join('|')
+    });
+
     // 1. Send Email Notification (Fire and forget)
     sendAuditNotification(formData).catch(err => console.error("Email dispatch error:", err));
 
@@ -84,6 +105,9 @@ const BusinessAudit: React.FC<BusinessAuditProps> = ({ onCtaClick }) => {
       const capacityMsg = "Our analysis engine is currently at capacity. Please schedule a brief call instead to review your data manually.";
       setErrorMessage(capacityMsg);
       setLoading(false);
+      
+      trackEvent('audit_error', { message: e.message });
+
       // Auto-trigger Calendly modal on failure so we don't lose the lead
       handleReviewClick();
     }

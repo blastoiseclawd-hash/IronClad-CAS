@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import CalendlyModal from './components/CalendlyModal';
@@ -7,6 +7,7 @@ import Articles from './views/Articles';
 import ArticleReader from './views/ArticleReader';
 import About from './views/About';
 import { Article, ViewState, LeadData } from './types';
+import { trackPageView, trackEvent } from './services/analyticsService';
 
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -14,12 +15,27 @@ const App = () => {
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
   const [prefillData, setPrefillData] = useState<LeadData | undefined>(undefined);
 
+  // Track Page Views when currentView changes
+  useEffect(() => {
+    trackPageView(`/${currentView}`);
+  }, [currentView]);
+
   const handleCtaClick = (data?: LeadData) => {
+    // Track the "Attempt to Book" event
+    trackEvent('open_booking_modal', {
+      source: currentView,
+      prefilled: !!data
+    });
+    
     setPrefillData(data);
     setIsModalOpen(true);
   };
 
   const handleReadArticle = (article: Article) => {
+    trackEvent('read_article', {
+      article_title: article.title,
+      category: article.category
+    });
     setSelectedArticle(article);
     setView('article-view');
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -29,6 +45,7 @@ const App = () => {
     switch (currentView) {
       case 'articles':
         return <Articles onRead={handleReadArticle} />;
+      
       case 'article-view':
         return selectedArticle ? (
           <ArticleReader 
@@ -36,6 +53,7 @@ const App = () => {
             onBack={() => setView('articles')} 
           />
         ) : <Articles onRead={handleReadArticle} />;
+        
       case 'about':
         return <About onCtaClick={() => handleCtaClick()} />;
       case 'landing':
