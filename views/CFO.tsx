@@ -19,7 +19,7 @@ const CFO: React.FC<CFOProps> = ({ onCtaClick }) => {
             Fractional CFO for high-growth companies. Executive financial strategy, leadership, and operational oversight.
           </p>
           <div className="flex items-center justify-center gap-4 text-[#C47F2A] font-semibold">
-            <span className="text-3xl">$8,000 - $15,000+</span>
+            <span className="text-3xl">Starting at $8,000</span>
             <span className="text-lg text-[#6B7C8C]">per month</span>
           </div>
         </div>
@@ -259,7 +259,7 @@ const CFO: React.FC<CFOProps> = ({ onCtaClick }) => {
             Strategic planning. Investor relations. Transaction support. Board participation.
           </p>
           <button
-            onClick={() => onCtaClick({ service: 'CFO', budget: '$8,000-15,000+/month' })}
+            onClick={() => onCtaClick({ service: 'CFO', budget: 'Starting at $8,000/month' })}
             className="bg-[#C47F2A] hover:bg-[#A86A1F] text-white px-12 py-4 rounded-lg text-lg font-semibold transition-all shadow-lg hover:shadow-xl"
           >
             Schedule Executive Briefing

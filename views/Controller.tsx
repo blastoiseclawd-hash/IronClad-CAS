@@ -19,7 +19,7 @@ const Controller: React.FC<ControllerProps> = ({ onCtaClick }) => {
             Outsourced Controller for growing businesses. Strategic financial management + robust reporting.
           </p>
           <div className="flex items-center justify-center gap-4 text-[#C47F2A] font-semibold">
-            <span className="text-3xl">$4,000 - $7,000</span>
+            <span className="text-3xl">Starting at $4,000</span>
             <span className="text-lg text-[#6B7C8C]">per month</span>
           </div>
         </div>
@@ -234,7 +234,7 @@ const Controller: React.FC<ControllerProps> = ({ onCtaClick }) => {
             Strategic financial management. Robust reporting. Operational oversight.
           </p>
           <button
-            onClick={() => onCtaClick({ service: 'Controller', budget: '$4,000-7,000/month' })}
+            onClick={() => onCtaClick({ service: 'Controller', budget: 'Starting at $4,000/month' })}
             className="bg-[#C47F2A] hover:bg-[#A86A1F] text-white px-12 py-4 rounded-lg text-lg font-semibold transition-all shadow-lg hover:shadow-xl"
           >
             Schedule Discovery Call

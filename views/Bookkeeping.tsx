@@ -19,7 +19,7 @@ const Bookkeeping: React.FC<BookkeepingProps> = ({ onCtaClick }) => {
             Monthly bookkeeping for growing businesses. Accurate books, on time, every time.
           </p>
           <div className="flex items-center justify-center gap-4 text-[#C47F2A] font-semibold">
-            <span className="text-3xl">$2,000 - $3,500</span>
+            <span className="text-3xl">Starting at $2,000</span>
             <span className="text-lg text-[#6B7C8C]">per month</span>
           </div>
         </div>
@@ -193,7 +193,7 @@ const Bookkeeping: React.FC<BookkeepingProps> = ({ onCtaClick }) => {
             Get accurate financials delivered by the 15th of every month. No long-term contracts.
           </p>
           <button
-            onClick={() => onCtaClick({ service: 'Bookkeeping', budget: '$2,000-3,500/month' })}
+            onClick={() => onCtaClick({ service: 'Bookkeeping', budget: 'Starting at $2,000/month' })}
             className="bg-[#C47F2A] hover:bg-[#A86A1F] text-white px-12 py-4 rounded-lg text-lg font-semibold transition-all shadow-lg hover:shadow-xl"
           >
             Schedule Discovery Call

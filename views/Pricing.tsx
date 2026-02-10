@@ -35,8 +35,8 @@ const Pricing: React.FC<PricingProps> = ({ onCtaClick, setView }) => {
               <h2 className="text-2xl font-bold text-[#3E4B55] mb-2">Bookkeeping</h2>
               <p className="text-sm text-[#6B7C8C] mb-4">For growing businesses that need clean, accurate books</p>
               <div className="flex items-baseline gap-2">
+                <span className="text-lg text-[#6B7C8C]">Starting at</span>
                 <span className="text-4xl font-bold text-[#C47F2A]">$2,000</span>
-                <span className="text-xl text-[#6B7C8C]">- $3,500</span>
               </div>
               <p className="text-sm text-[#6B7C8C] mt-1">per month</p>
             </div>
@@ -72,7 +72,7 @@ const Pricing: React.FC<PricingProps> = ({ onCtaClick, setView }) => {
 
             <div className="space-y-3">
               <button
-                onClick={() => onCtaClick({ service: 'Bookkeeping', budget: '$2,000-3,500/month' })}
+                onClick={() => onCtaClick({ service: 'Bookkeeping', budget: 'Starting at $2,000/month' })}
                 className="w-full bg-[#3E4B55] hover:bg-[#2A3440] text-white py-3 rounded-lg font-semibold transition-all"
               >
                 Get Started
@@ -96,8 +96,8 @@ const Pricing: React.FC<PricingProps> = ({ onCtaClick, setView }) => {
               <h2 className="text-2xl font-bold text-white mb-2">Controller</h2>
               <p className="text-sm text-[#F5E6D3] mb-4">For businesses that need strategic financial management</p>
               <div className="flex items-baseline gap-2">
+                <span className="text-lg text-[#F5E6D3]">Starting at</span>
                 <span className="text-4xl font-bold text-white">$4,000</span>
-                <span className="text-xl text-[#F5E6D3]">- $7,000</span>
               </div>
               <p className="text-sm text-[#F5E6D3] mt-1">per month</p>
             </div>
@@ -134,7 +134,7 @@ const Pricing: React.FC<PricingProps> = ({ onCtaClick, setView }) => {
 
             <div className="space-y-3">
               <button
-                onClick={() => onCtaClick({ service: 'Controller', budget: '$4,000-7,000/month' })}
+                onClick={() => onCtaClick({ service: 'Controller', budget: 'Starting at $4,000/month' })}
                 className="w-full bg-white hover:bg-[#F5F7FA] text-[#C47F2A] py-3 rounded-lg font-semibold transition-all"
               >
                 Get Started
@@ -154,8 +154,8 @@ const Pricing: React.FC<PricingProps> = ({ onCtaClick, setView }) => {
               <h2 className="text-2xl font-bold text-[#3E4B55] mb-2">CFO</h2>
               <p className="text-sm text-[#6B7C8C] mb-4">For high-growth companies needing executive leadership</p>
               <div className="flex items-baseline gap-2">
+                <span className="text-lg text-[#6B7C8C]">Starting at</span>
                 <span className="text-4xl font-bold text-[#C47F2A]">$8,000</span>
-                <span className="text-xl text-[#6B7C8C]">- $15,000+</span>
               </div>
               <p className="text-sm text-[#6B7C8C] mt-1">per month</p>
             </div>
@@ -192,7 +192,7 @@ const Pricing: React.FC<PricingProps> = ({ onCtaClick, setView }) => {
 
             <div className="space-y-3">
               <button
-                onClick={() => onCtaClick({ service: 'CFO', budget: '$8,000-15,000+/month' })}
+                onClick={() => onCtaClick({ service: 'CFO', budget: 'Starting at $8,000/month' })}
                 className="w-full bg-[#3E4B55] hover:bg-[#2A3440] text-white py-3 rounded-lg font-semibold transition-all"
               >
                 Get Started
