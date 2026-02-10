@@ -6,6 +6,10 @@ import Landing from './views/Landing';
 import Articles from './views/Articles';
 import ArticleReader from './views/ArticleReader';
 import About from './views/About';
+import Pricing from './views/Pricing';
+import Bookkeeping from './views/Bookkeeping';
+import Controller from './views/Controller';
+import CFO from './views/CFO';
 import { Article, ViewState, LeadData } from './types';
 import { trackPageView, trackEvent } from './services/analyticsService';
 
@@ -56,6 +60,19 @@ const App = () => {
         
       case 'about':
         return <About onCtaClick={() => handleCtaClick()} />;
+      
+      case 'pricing':
+        return <Pricing onCtaClick={handleCtaClick} setView={setView} />;
+      
+      case 'bookkeeping':
+        return <Bookkeeping onCtaClick={handleCtaClick} />;
+      
+      case 'controller':
+        return <Controller onCtaClick={handleCtaClick} />;
+      
+      case 'cfo':
+        return <CFO onCtaClick={handleCtaClick} />;
+      
       case 'landing':
       default:
         return <Landing onCtaClick={handleCtaClick} />;

@@ -63,12 +63,11 @@ const Navbar: React.FC<NavbarProps> = ({ onCtaClick, currentView, setView }) => 
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
+            <button onClick={() => handleViewChange('pricing')} className="text-[#0B1F3A] hover:text-[#C47F2A] font-semibold transition-colors">Pricing</button>
             <button onClick={() => handleNavClick('symptoms')} className="text-[#0B1F3A] hover:text-[#C47F2A] font-semibold transition-colors">The Problems</button>
             <button onClick={() => handleNavClick('solution')} className="text-[#0B1F3A] hover:text-[#C47F2A] font-semibold transition-colors">The System</button>
-            <button onClick={() => handleNavClick('services')} className="text-[#0B1F3A] hover:text-[#C47F2A] font-semibold transition-colors">Services</button>
             <button onClick={() => handleViewChange('articles')} className="text-[#0B1F3A] hover:text-[#C47F2A] font-semibold transition-colors">Insights</button>
             <button onClick={() => handleViewChange('about')} className="text-[#0B1F3A] hover:text-[#C47F2A] font-semibold transition-colors">Our Firm</button>
-            <button onClick={() => handleNavClick('contact')} className="text-[#0B1F3A] hover:text-[#C47F2A] font-semibold transition-colors">Contact</button>
             <Button onClick={onCtaClick} variant="secondary" className="py-2 px-6 text-xs shadow-none">Book Strategy Call</Button>
           </div>
 
@@ -84,12 +83,11 @@ const Navbar: React.FC<NavbarProps> = ({ onCtaClick, currentView, setView }) => 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-[#D4DBE2] border-t border-[#0B1F3A]/10 px-4 pt-4 pb-6 space-y-4 shadow-xl">
-             <button onClick={() => handleNavClick('symptoms')} className="block w-full text-left text-[#0B1F3A] font-semibold py-2">The Problems</button>
+            <button onClick={() => handleViewChange('pricing')} className="block w-full text-left text-[#0B1F3A] font-semibold py-2">Pricing</button>
+            <button onClick={() => handleNavClick('symptoms')} className="block w-full text-left text-[#0B1F3A] font-semibold py-2">The Problems</button>
             <button onClick={() => handleNavClick('solution')} className="block w-full text-left text-[#0B1F3A] font-semibold py-2">The System</button>
-            <button onClick={() => handleNavClick('services')} className="block w-full text-left text-[#0B1F3A] font-semibold py-2">Services</button>
             <button onClick={() => handleViewChange('articles')} className="block w-full text-left text-[#0B1F3A] font-semibold py-2">Insights</button>
             <button onClick={() => handleViewChange('about')} className="block w-full text-left text-[#0B1F3A] font-semibold py-2">Our Firm</button>
-             <button onClick={() => handleNavClick('contact')} className="block w-full text-left text-[#0B1F3A] font-semibold py-2">Contact</button>
             <Button onClick={onCtaClick} variant="primary" className="w-full text-center mt-4">Book Strategy Call</Button>
         </div>
       )}
