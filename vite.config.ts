@@ -22,7 +22,7 @@ export default defineConfig(({ mode }) => {
         ''
       )
     },
-    base: process.env.GITHUB_PAGES ? '/IronClad-CAS/' : '/',
+    base: '/',
     build: {
       outDir: 'dist',
     },
