@@ -1,10 +1,10 @@
 import React from 'react';
 import { Check, X, ArrowRight } from 'lucide-react';
-import { LeadData } from '../types';
+import { LeadData, ViewState } from '../types';
 
 interface PricingProps {
   onCtaClick: (data?: LeadData) => void;
-  setView: (view: string) => void;
+  setView: (view: ViewState) => void;
 }
 
 const Pricing: React.FC<PricingProps> = ({ onCtaClick, setView }) => {
